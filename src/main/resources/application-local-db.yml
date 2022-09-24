@@ -1,0 +1,36 @@
+server:
+  port: 8081
+
+file:
+  dir: /Users/jp/Pictures/test/
+
+spring:
+  session:
+    store-type: jdbc
+    jdbc.initialize-schema: always
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: system
+    password: oracle
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+
+  devtools:
+    livereload:
+      enabled: true
+
+  # fileSize
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+
+
+logging.level:
+  org.hibernate.SQL: debug

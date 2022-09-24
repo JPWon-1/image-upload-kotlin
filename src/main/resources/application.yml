@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: local
+    group:
+      local:
+        - h2-db
+  session:
+    store-type: jdbc
+
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+  devtools:
+    livereload:
+      enabled: true
+  thymeleaf:
+    cache: false
+
