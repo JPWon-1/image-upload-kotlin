@@ -25,6 +25,12 @@ class ImageFileController {
         return "redirect:/gallery"
     }
 
+    @PostMapping("/upload2")
+    fun upload2(@RequestParam("files") multipartFiles: List<MultipartFile>, model: Model): String {
+        imageFileService.saveImages(multipartFiles)
+        return "redirect:/gallery"
+    }
+
     @ResponseBody
     @GetMapping("/images/{filename}")
     fun loadImage(@PathVariable filename: String): Resource {

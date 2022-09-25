@@ -17,9 +17,6 @@ class GalleryController {
     fun gallery(model: Model): String {
         val imageFiles: MutableIterable<ImageFile> = imageFileRepository.findAll()
         model.addAttribute("imageFiles", imageFiles)
-//        model.addAttribute("latitude", latitude)
-//        model.addAttribute("longitude", longitude)
-//        model.addAttribute("localDateTime", localDateTime)
         return "gallery"
     }
 }
