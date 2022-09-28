@@ -13,10 +13,17 @@ class GalleryController {
     @Autowired
     lateinit var imageFileRepository: ImageFileRepository
 
-    @GetMapping("/gallery")
-    fun gallery(model: Model): String {
+    @GetMapping("/index")
+    fun index(model: Model): String {
         val imageFiles: MutableIterable<ImageFile> = imageFileRepository.findAll()
         model.addAttribute("imageFiles", imageFiles)
-        return "gallery"
+        return "index"
+    }
+
+    @GetMapping("/lightbox")
+    fun lightbox(model: Model): String {
+        val imageFiles: MutableIterable<ImageFile> = imageFileRepository.findAll()
+        model.addAttribute("imageFiles", imageFiles)
+        return "lightbox"
     }
 }

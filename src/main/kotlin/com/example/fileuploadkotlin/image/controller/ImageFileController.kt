@@ -20,15 +20,9 @@ class ImageFileController {
     lateinit var imageFileService: ImageFileService
 
     @PostMapping("/upload")
-    fun upload(@RequestParam("file") multipartFile: MultipartFile, model: Model): String {
-        imageFileService.saveImage(multipartFile)
-        return "redirect:/gallery"
-    }
-
-    @PostMapping("/upload2")
     fun upload2(@RequestParam("files") multipartFiles: List<MultipartFile>, model: Model): String {
         imageFileService.saveImages(multipartFiles)
-        return "redirect:/gallery"
+        return "redirect:/index"
     }
 
     @ResponseBody
