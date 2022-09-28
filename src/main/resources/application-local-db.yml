@@ -21,10 +21,18 @@ spring:
         format_sql: true
         use_sql_comments: true
 
-  devtools:
-    livereload:
-      enabled: true
-
+#  devtools:
+#    livereload:
+#      enabled: true
+#    remote:
+#      restart:
+#        enabled: true
+#  thymeleaf:
+#    cache: false
+#    prefix: file:src/main/resources/templates/
+#  web:
+#    resources:
+#      static-locations: file:src/main/resources/static/
   # fileSize
   servlet:
     multipart:
