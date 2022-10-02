@@ -1,5 +1,7 @@
 package com.example.fileuploadkotlin.image.controller
 
+import com.example.fileuploadkotlin.image.domain.file.ImageFile
+import com.example.fileuploadkotlin.image.repository.ImageFileRepository
 import com.example.fileuploadkotlin.image.service.ImageFileService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
@@ -17,17 +19,26 @@ class ImageFileController {
     val fileDir: String? = null
 
     @Autowired
+    lateinit var imageFileRepository: ImageFileRepository
+
+    @Autowired
     lateinit var imageFileService: ImageFileService
 
     @PostMapping("/upload")
     fun upload2(@RequestParam("files") multipartFiles: List<MultipartFile>, model: Model): String {
         imageFileService.saveImages(multipartFiles)
-        return "redirect:/index"
+        return "redirect:/album"
     }
 
     @ResponseBody
     @GetMapping("/images/{filename}")
     fun loadImage(@PathVariable filename: String): Resource {
         return UrlResource("file:"+fileDir+"/"+filename)
+    }
+
+    @ResponseBody
+    @GetMapping("/getImages")
+    fun loadAllImages(): MutableIterable<ImageFile> {
+        return imageFileRepository.findAll()
     }
 }
