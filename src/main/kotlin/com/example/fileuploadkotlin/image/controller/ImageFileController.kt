@@ -25,7 +25,12 @@ class ImageFileController {
     lateinit var imageFileService: ImageFileService
 
     @PostMapping("/upload")
-    fun upload2(@RequestParam("files") multipartFiles: List<MultipartFile>, model: Model): String {
+    fun upload(@RequestParam("files") multipartFiles: List<MultipartFile>): String {
+        for (multipartFile in multipartFiles) {
+            if(multipartFile.isEmpty){
+                throw Exception("파일을 선택해주세요")
+            }
+        }
         imageFileService.saveImages(multipartFiles)
         return "redirect:/album"
     }
